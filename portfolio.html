@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — What If Studios | Zulqarnain Graphic Designer</title>
+  <meta name="description" content="Explore Zulqarnain's portfolio — logo design, social media graphics, brand identity, posters, thumbnails and more. What If Studios Pakistan.">
+  <meta name="keywords" content="graphic design portfolio Pakistan, logo design work, social media design, What If Studios portfolio, Zulqarnain design work">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://whatifstudios.pk/portfolio">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollBar"></div>
+
+<nav class="main-navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="/assests/logo/logo.jpeg" alt="What If Studios" class="logo-img">
+      <span>What If Studios</span>
+    </a>
+    <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="index.html#about"><i class="fas fa-user"></i> About</a></li>
+      <li><a href="index.html#services"><i class="fas fa-rocket"></i> Services</a></li>
+      <li><a href="portfolio.html" class="active"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+      <li id="nav-contact"><a href="index.html#contact" class="contact-btn">Contact Me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="port-hero">
+  <div class="hero-orb orb-a"></div>
+  <div class="hero-orb orb-b"></div>
+  <div class="hero-orb orb-c"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><i class="fas fa-palette"></i> What If Studios</div>
+    <h1>Build Stunning <em>Graphic Designs</em><br>& Creative Portfolio</h1>
+    <p>Browse logos, social media graphics, brand identities, posters, thumbnails and more — all crafted with passion.</p>
+    <div class="hero-stats">
+      <div class="hstat"><strong id="totalCount">30+</strong><span>Projects</span></div>
+      <div class="hsdiv"></div>
+      <div class="hstat"><strong id="catCount">6</strong><span>Categories</span></div>
+      <div class="hsdiv"></div>
+      <div class="hstat"><strong>5★</strong><span>Rating</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="filter-bar" id="filterBar">
+  <div class="filter-inner">
+    <div class="filter-cats" id="filterCats"></div>
+    <div class="filter-right">
+      <div class="search-wrap">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search projects…">
+      </div>
+      <div class="view-btns">
+        <button class="vbtn" id="v4" title="4 col"><i class="fas fa-th"></i></button>
+        <button class="vbtn active" id="v3" title="3 col"><i class="fas fa-th-large"></i></button>
+        <button class="vbtn" id="v2" title="2 col"><i class="fas fa-grip-horizontal"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="portfolio-section">
+  <div class="results-bar">
+    <div class="results-count">Showing <b id="showCount">0</b> projects</div>
+    <select class="sort-select" id="sortSelect">
+      <option value="default">Default Order</option>
+      <option value="az">A to Z</option>
+      <option value="za">Z to A</option>
+    </select>
+  </div>
+  <div class="port-grid g3" id="portGrid">
+    <div class="no-results" id="noResults">
+      <i class="fas fa-search"></i>
+      <h3>No projects found</h3>
+      <p>Try a different category or search term.</p>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <div class="lb-inner">
+    <button class="lb-close" id="lbClose"><i class="fas fa-times"></i></button>
+    <button class="lb-nav lb-prev" id="lbPrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lb-nav lb-next" id="lbNext"><i class="fas fa-chevron-right"></i></button>
+    <img src="#" alt="" id="lbImg" class="lb-img">
+    <div class="lb-info">
+      <div class="lb-cat" id="lbCat"></div>
+      <div class="lb-title" id="lbTitle"></div>
+      <div class="lb-desc" id="lbDesc"></div>
+    </div>
+  </div>
+</div>
+
+<!-- <footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo.jpeg" alt="What If Studios">
+      <span>What If Studios</span>
+    </div>
+    <div class="footer-links-row">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="footer-socials">
+      <a href="#" class="fsoc"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="fsoc"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="fsoc"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="fsoc"><i class="fab fa-behance"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 What If Studios — Zulqarnain. All Rights Reserved.</div>
+</footer> -->
+
+ <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="/assests/logo/logo.jpeg" alt="What If Studios" class="footer-logo-img">
+          <span>What If Studios</span>
+        </div>
+        <p>Creative Designer crafting brand stories and digital art that inspires. Combining emotion, precision, and innovation through design. 🎨✨</p>
+        <div class="social-links">
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="Behance"><i class="fab fa-behance"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+          <li><a href="#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
+          <li><a href="/portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+          <li><a href="#contact"><i class="fas fa-paper-plane"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Newsletter</h4>
+        <p>Stay updated with the latest projects and design insights.</p>
+        <button class="subscribe-btn">Subscribe Now</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 What If Studios — Zulqarnain. All Rights Reserved. | Made with ❤️</p>
+    </div>
+  </footer>
+<button class="back-top" id="backTop"><i class="fas fa-arrow-up"></i></button>
+
+<script src="portfolio-data.js"></script>
+<script src="portfolio.js"></script>
+</body>
+</html>
