@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
-  <style>
+  <!-- <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
   :root{
     --purple:#5c3d9c;--purple-dark:#3d2568;--purple-light:#7b5cb8;
@@ -153,12 +153,12 @@
   .tool-btn.danger:hover{border-color:var(--red);color:var(--red);background:rgba(220,38,38,.06)}
 
   @media(max-width:600px){.admin-top{padding:0 16px}.admin-main{padding:18px 16px}.modal-body,.modal-foot{padding:18px 20px}.modal-head{padding:20px 20px 0}}
-  </style>
+  </style> -->
 </head>
 <body>
 
 <!-- ══ LOGIN SCREEN ══ -->
-<div class="login-screen" id="loginScreen">
+<!-- <div class="login-screen" id="loginScreen">
   <div class="login-box">
     <img src="/assests/logo/logo.jpeg" onerror="this.src='logo.jpeg'" alt="What If Studios" class="login-logo">
     <h2>Admin Login</h2>
@@ -175,10 +175,10 @@
     <button class="login-btn" id="loginBtn"><i class="fas fa-lock-open"></i> Login to Admin</button>
     <div class="login-error" id="loginError"><i class="fas fa-exclamation-circle"></i> <span>Wrong username or password!</span></div>
   </div>
-</div>
+</div> -->
 
 <!-- TOP BAR -->
-<div class="admin-top">
+<!-- <div class="admin-top">
   <div class="admin-brand">
     <img src="../logo.jpeg" onerror="this.src='logo.jpeg'" alt="WIS">
     <span>Admin Panel</span>
@@ -192,9 +192,9 @@
   </div>
 </div>
 
-<div class="admin-layout">
+<div class="admin-layout"> -->
   <!-- SIDEBAR -->
-  <aside class="admin-sidebar">
+  <!-- <aside class="admin-sidebar">
     <div class="sidebar-title">Overview</div>
     <div class="sidebar-stats">
       <div class="sstat"><strong id="sb-total">0</strong><span>Total</span></div>
@@ -208,18 +208,18 @@
       <div class="danger-title"><i class="fas fa-exclamation-triangle"></i> Danger Zone</div>
       <button class="reset-btn" id="resetDataBtn"><i class="fas fa-undo"></i> Reset to Default Data</button>
     </div>
-  </aside>
+  </aside> -->
 
   <!-- MAIN -->
-  <main class="admin-main">
+  <!-- <main class="admin-main">
     <div class="main-header">
       <h2>Projects — <span id="activeLabel">All</span></h2>
       <button class="add-btn" id="addBtn"><i class="fas fa-plus"></i> Add Project</button>
     </div>
-    <div class="items-grid" id="itemsGrid"></div>
+    <div class="items-grid" id="itemsGrid"></div> -->
 
     <!-- EXPORT / IMPORT TOOLS -->
-    <div class="tools-section">
+    <!-- <div class="tools-section">
       <div class="tools-title"><i class="fas fa-tools"></i> Data Tools</div>
       <div class="tools-row">
         <button class="tool-btn" id="exportBtn"><i class="fas fa-download"></i> Export JSON</button>
@@ -232,10 +232,10 @@
       </div>
     </div>
   </main>
-</div>
+</div> -->
 
 <!-- ADD / EDIT MODAL -->
-<div class="modal-bg" id="modalBg">
+<!-- <div class="modal-bg" id="modalBg">
   <div class="modal">
     <div class="modal-head">
       <h3 id="modalTitle">Add New Project</h3>
@@ -291,12 +291,12 @@
       <button class="modal-btn btn-submit" id="modalSubmit"><i class="fas fa-check"></i> Save Project</button>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- TOAST -->
-<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg">Saved!</span></div>
+<!-- <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg">Saved!</span></div> -->
 
-<script>
+<!-- <script>
 /* ── DEFAULT DATA (inline so no path issues) ── */
 var portfolioData = [
   {id:1,cat:"Logo Design",title:"The Thi Agency",desc:"Modern minimalist brand identity for a creative agency.",img:"#",tags:["logo","minimal"]},
@@ -638,6 +638,6 @@ var ADMIN_USERS = [
   renderSidebar();
   renderItems();
 })();
-</script>
+</script> -->
 </body>
 </html>
