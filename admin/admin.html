@@ -490,11 +490,12 @@ var ADMIN_USERS = [
       return;
     }
     grid.innerHTML = visible.map(function(item){
-      var hasImg = item.img && item.img!=='#';
+      var src    = previewPath(item.img); /* use previewPath: adds ../ for admin/ folder */
+      var hasImg = !!src;
       return '<div class="item-card" data-id="'+item.id+'">'
         +'<div class="item-thumb">'
           +(hasImg
-            ? '<img src="'+item.img+'" alt="'+item.title+'" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
+            ? '<img src="'+src+'" alt="'+item.title+'" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
               +'<div class="item-thumb-placeholder" style="display:none"><i class="fas fa-image"></i><span>Image not found</span></div>'
             : '<div class="item-thumb-placeholder"><i class="'+icon(item.cat)+'" style="font-size:36px;opacity:.3"></i><span style="font-size:11px;opacity:.5">No image yet</span></div>'
           )
