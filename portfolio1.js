@@ -9,16 +9,6 @@
     if(saved && saved.length) portfolioData = saved;
   } catch(e){}
 
-  /* ── Resolve image path — portfolio.html is in root, so paths are root-relative ── */
-  function resolveImg(p){
-    if(!p || p==='#') return null;
-    /* remove any accidental leading slash */
-    p = p.replace(/^\/+/, '');
-    /* remove any accidental ../ prefix (admin added it for preview only) */
-    p = p.replace(/^\.\.\//, '');
-    return p;  /* now root-relative: assests/fiverr gig/01.jpeg */
-  }
-
   /* ── State ── */
   var activeCategory = 'All';
   var searchTerm     = '';
@@ -117,8 +107,7 @@
 
     filteredItems.forEach(function(item, idx){
       var col    = getColor(item.cat);
-      var imgSrc = resolveImg(item.img);
-      var hasImg = !!imgSrc;
+      var hasImg = item.img && item.img!=='#';
       var card   = document.createElement('div');
       card.className = 'port-card';
       card.style.animationDelay = (idx*0.045)+'s';
@@ -127,7 +116,7 @@
       card.innerHTML =
         '<div class="card-img-wrap">'
           +(hasImg
-            ? '<img src="'+imgSrc+'" alt="'+item.title+'" loading="lazy">'
+            ? '<img src="'+item.img+'" alt="'+item.title+'" loading="lazy">'
             : '<div class="card-placeholder" style="background:linear-gradient(135deg,'+col+'cc,'+col+')">'
                 +'<i class="'+getIcon(item.cat)+'"></i>'
                 +'<span>Image Coming Soon</span>'
@@ -172,10 +161,10 @@
   function showLbItem(){
     var item   = filteredItems[lbIndex];
     if(!item) return;
-    var imgSrc = resolveImg(item.img);
-    var lbImg  = document.getElementById('lbImg');
-    lbImg.src  = imgSrc ? imgSrc : 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500"><rect fill="%231a0f2e" width="800" height="500"/><text x="50%25" y="48%25" fill="rgba(245,240,74,.3)" font-size="52" text-anchor="middle" dy=".35em" font-family="sans-serif">'+encodeURIComponent(item.title)+'</text><text x="50%25" y="62%25" fill="rgba(255,255,255,.2)" font-size="20" text-anchor="middle" font-family="sans-serif">Image Coming Soon</text></svg>';
-    lbImg.alt  = item.title;
+    var hasImg = item.img && item.img!=='#';
+    var img    = document.getElementById('lbImg');
+    img.src    = hasImg ? item.img : 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500"><rect fill="%231a0f2e" width="800" height="500"/><text x="50%25" y="48%25" fill="rgba(245,240,74,.3)" font-size="52" text-anchor="middle" dy=".35em" font-family="sans-serif">'+encodeURIComponent(item.title)+'</text><text x="50%25" y="62%25" fill="rgba(255,255,255,.2)" font-size="20" text-anchor="middle" font-family="sans-serif">Image Coming Soon</text></svg>';
+    img.alt    = item.title;
     document.getElementById('lbCat').innerHTML   = '<i class="'+getIcon(item.cat)+'"></i> '+item.cat;
     document.getElementById('lbTitle').textContent = item.title;
     document.getElementById('lbDesc').textContent  = item.desc;

@@ -40,12 +40,6 @@
   .login-shake{animation:shake .4s ease}
   @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
 
-  /* folder quick-pick buttons */
-  .folder-btn{padding:5px 12px;background:rgba(92,61,156,.08);color:var(--purple);border:1.5px solid rgba(92,61,156,.2);border-radius:8px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:var(--t)}
-  .folder-btn:hover,.folder-btn.active-folder{background:var(--purple);color:#fff;border-color:var(--purple)}
-  .file-select-btn{padding:5px 14px;background:var(--card);color:var(--text-mid);border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:var(--t)}
-  .file-select-btn:hover{background:var(--purple);color:#fff;border-color:var(--purple)}
-
   /* ── TOP BAR ── */
   .admin-top{background:linear-gradient(135deg,var(--purple-dark),var(--purple));padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(61,37,104,.35)}
   .admin-brand{display:flex;align-items:center;gap:12px;color:#fff;font-family:'Syne',sans-serif;font-size:18px;font-weight:800}
@@ -166,7 +160,7 @@
 <!-- ══ LOGIN SCREEN ══ -->
 <div class="login-screen" id="loginScreen">
   <div class="login-box">
-    <img src="../logo.jpeg" onerror="this.src='logo.jpeg'" alt="What If Studios" class="login-logo">
+    <img src="/assests/logo/logo.jpeg" onerror="this.src='logo.jpeg'" alt="What If Studios" class="login-logo">
     <h2>Admin Login</h2>
     <p>What If Studios — Portfolio Admin Panel</p>
     <div class="login-field">
@@ -271,42 +265,18 @@
       </div>
       <div class="form-row">
         <label>Image Path</label>
-
-        <!-- Quick folder picker buttons -->
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">
-          <span style="font-size:11px;font-weight:700;color:var(--text-muted);align-self:center;text-transform:uppercase;letter-spacing:.05em">Quick folders:</span>
-          <button type="button" class="folder-btn" data-path="assests/fiverr gig/">📁 fiverr gig</button>
-          <button type="button" class="folder-btn" data-path="assests/linkdin banner/">📁 linkedin banner</button>
-          <button type="button" class="folder-btn" data-path="assests/logo/">📁 logo</button>
-          <button type="button" class="folder-btn" data-path="assests/reviewimg/">📁 reviewimg</button>
-          <button type="button" class="folder-btn" data-path="assests/social media post/">📁 social media</button>
-          <button type="button" class="folder-btn" data-path="assests/thumbnail/">📁 thumbnail</button>
-          <button type="button" class="folder-btn" data-path="assests/imges/">📁 imges</button>
-        </div>
-
         <div class="img-input-wrap">
           <div style="flex:1">
-            <input type="text" id="f-img" placeholder='e.g. assests/fiverr gig/01.jpeg' autocomplete="off">
-            <!-- live path status -->
-            <div id="pathStatus" style="display:none;margin-top:6px;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;align-items:center;gap:7px"></div>
-            <div class="img-hint" style="margin-top:8px">
-              <b>⚠️ Vercel path rules — must follow exactly:</b><br>
-              ✅ Lowercase extension: <code>01.jpeg</code> not <code>01.JPEG</code><br>
-              ✅ Folder name with space is OK: <code>assests/linkdin banner/01.jpeg</code><br>
-              ✅ Start WITHOUT slash: <code>assests/...</code> not <code>/assests/...</code><br>
-              ✅ From admin/ folder: <code>../assests/linkdin banner/01.jpeg</code>
+            <input type="text" id="f-img" placeholder='e.g. ../assets/categories/logos/my-logo.jpg'>
+            <div class="img-hint">
+              📁 Aap ka folder structure:<br>
+              <code style="background:#f0ecff;padding:2px 6px;border-radius:4px;font-size:11px">assets/categories/logos/file.jpg</code><br>
+              <code style="background:#f0ecff;padding:2px 6px;border-radius:4px;font-size:11px">assets/categories/social/file.jpg</code><br>
+              Admin folder se path: <b>../assets/categories/logos/file.jpg</b><br>
+              Use <b>#</b> to show placeholder until image is ready.
             </div>
           </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
-            <img id="f-img-preview" class="img-preview" alt="preview" style="display:none;width:80px;height:80px;border-radius:10px;object-fit:cover;border:2px solid var(--border)">
-            <span id="previewLabel" style="font-size:10px;color:var(--text-muted);font-weight:600;display:none">Preview</span>
-          </div>
-        </div>
-
-        <!-- File number helper for fiverr gig folder (01-06) -->
-        <div id="fiverGigHelper" style="display:none;margin-top:10px;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px">
-          <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Files in selected folder — click to select:</div>
-          <div id="fileButtons" style="display:flex;flex-wrap:wrap;gap:6px"></div>
+          <img id="f-img-preview" class="img-preview" alt="preview">
         </div>
       </div>
       <div class="form-row">
@@ -542,10 +512,7 @@ var ADMIN_USERS = [
       document.getElementById('f-desc').value  = item.desc;
       document.getElementById('f-img').value   = item.img||'#';
       tagsList = (item.tags||[]).slice();
-      /* reset folder buttons */
-      document.querySelectorAll('.folder-btn').forEach(function(b){ b.classList.remove('active-folder'); });
-      document.getElementById('fiverGigHelper').style.display='none';
-      setTimeout(updatePathPreview, 50); /* slight delay so DOM is ready */
+      if(item.img && item.img!=='#'){ var pi=document.getElementById('f-img-preview'); pi.src=item.img; pi.classList.add('show'); }
     } else {
       document.getElementById('f-title').value = '';
       document.getElementById('f-cat').value   = '';
@@ -561,13 +528,6 @@ var ADMIN_USERS = [
     document.getElementById('modalBg').classList.remove('open');
     document.body.style.overflow='';
     editingId=null; tagsList=[];
-    document.getElementById('f-img').value='#';
-    document.getElementById('f-img-preview').style.display='none';
-    document.getElementById('previewLabel').style.display='none';
-    document.getElementById('pathStatus').style.display='none';
-    document.getElementById('fiverGigHelper').style.display='none';
-    document.querySelectorAll('.folder-btn').forEach(function(b){ b.classList.remove('active-folder'); });
-    currentFolderPrefix='';
   }
 
   /* tags */
@@ -596,128 +556,18 @@ var ADMIN_USERS = [
     ti.addEventListener('blur',  function(){ ti.classList.remove('focused'); }, true);
   }
 
-  /* ══ SMART IMAGE PATH HANDLER ══ */
-
-  /* Folder definitions matching your actual VS Code file tree */
-  var FOLDERS = {
-    'assests/fiverr gig/':      ['01.jpeg','02.jpeg','03.jpeg','04.jpeg','05.jpeg','06.jpeg'],
-    'assests/linkdin banner/':  [], /* user knows their filenames */
-    'assests/logo/':            [],
-    'assests/reviewimg/':       [],
-    'assests/social media post/':[],
-    'assests/thumbnail/':       [],
-    'assests/imges/':           [],
-  };
-
-  var currentFolderPrefix = '';
-
-  /* resolve path for saving — store as root-relative (no leading slash) */
-  function sanitizePath(rawPath){
-    var p = rawPath.trim();
-    if(!p || p==='#') return '#';
-    /* remove leading slash */
-    p = p.replace(/^\/+/, '');
-    /* if starts with ../ — remove it, make root-relative for storage */
-    p = p.replace(/^\.\.\//, '');
-    return p;
-  }
-
-  /* resolve path for <img src> preview — from admin/ folder need ../ prefix */
-  function previewPath(storedPath){
-    if(!storedPath || storedPath==='#') return null;
-    /* already has ../ — use as-is */
-    if(storedPath.startsWith('../')) return storedPath;
-    /* stored as root-relative — add ../ for admin folder */
-    return '../' + storedPath;
-  }
-
-  function updatePathPreview(){
-    var raw  = document.getElementById('f-img').value;
-    var pi   = document.getElementById('f-img-preview');
-    var pl   = document.getElementById('previewLabel');
-    var ps   = document.getElementById('pathStatus');
-
-    if(!raw || raw==='#'){
-      pi.style.display='none'; pl.style.display='none'; ps.style.display='none';
-      return;
-    }
-
-    var stored = sanitizePath(raw);
-    var src    = previewPath(stored);
-
-    ps.style.display = 'flex';
-    ps.style.background = 'rgba(22,163,74,.08)';
-    ps.style.border = '1px solid rgba(22,163,74,.2)';
-    ps.style.color = '#15803d';
-    ps.innerHTML = '<i class="fas fa-check-circle"></i> Saved path: <code style="background:rgba(22,163,74,.1);padding:1px 6px;border-radius:4px">'+stored+'</code>';
-
-    pi.src = src;
-    pi.style.display = 'block';
-    pl.style.display = 'block';
-    pi.onerror = function(){
-      ps.style.background = 'rgba(220,38,38,.08)';
-      ps.style.border = '1px solid rgba(220,38,38,.2)';
-      ps.style.color = '#dc2626';
-      ps.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Image not found at: <code style="background:rgba(220,38,38,.1);padding:1px 6px;border-radius:4px">'+stored+'</code> — check filename & extension (must be lowercase: .jpeg not .JPEG)';
-      pi.style.display = 'none';
-      pl.style.display = 'none';
-    };
-    pi.onload = function(){
-      ps.style.background = 'rgba(22,163,74,.08)';
-      ps.style.border = '1px solid rgba(22,163,74,.2)';
-      ps.style.color = '#15803d';
-      ps.innerHTML = '<i class="fas fa-check-circle"></i> ✅ Image found! Saved as: <code style="background:rgba(22,163,74,.1);padding:1px 6px;border-radius:4px">'+stored+'</code>';
-      pi.style.display = 'block';
-      pl.style.display = 'block';
-    };
-  }
-
-  document.getElementById('f-img').addEventListener('input', updatePathPreview);
-
-  /* folder quick-pick buttons */
-  document.querySelectorAll('.folder-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      document.querySelectorAll('.folder-btn').forEach(function(b){ b.classList.remove('active-folder'); });
-      btn.classList.add('active-folder');
-      currentFolderPrefix = btn.dataset.path;
-
-      var helper   = document.getElementById('fiverGigHelper');
-      var filesBtns = document.getElementById('fileButtons');
-      var files    = FOLDERS[currentFolderPrefix] || [];
-
-      if(files.length){
-        helper.style.display = 'block';
-        filesBtns.innerHTML  = files.map(function(f){
-          return '<button type="button" class="file-select-btn" data-file="'+f+'">'+f+'</button>';
-        }).join('');
-        filesBtns.querySelectorAll('.file-select-btn').forEach(function(fb){
-          fb.addEventListener('click', function(){
-            document.getElementById('f-img').value = currentFolderPrefix + fb.dataset.file;
-            updatePathPreview();
-          });
-        });
-      } else {
-        helper.style.display = 'none';
-        /* just set folder prefix so user types filename */
-        document.getElementById('f-img').value = currentFolderPrefix;
-        document.getElementById('f-img').focus();
-        /* move cursor to end */
-        var inp = document.getElementById('f-img');
-        var len = inp.value.length;
-        inp.setSelectionRange(len,len);
-      }
-    });
+  document.getElementById('f-img').addEventListener('input', function(){
+    var v = this.value.trim();
+    var pi = document.getElementById('f-img-preview');
+    if(v && v!=='#'){ pi.src=v; pi.classList.add('show'); }
+    else { pi.classList.remove('show'); }
   });
 
-  /* When saving — sanitize path before storing */
-
-  /* When saving — sanitize path before storing */
   document.getElementById('modalSubmit').addEventListener('click', function(){
     var title = document.getElementById('f-title').value.trim();
     var cat   = document.getElementById('f-cat').value;
     var desc  = document.getElementById('f-desc').value.trim();
-    var rawImg = document.getElementById('f-img').value.trim();
-    var img   = sanitizePath(rawImg); /* clean path — remove leading slash, remove ../ */
+    var img   = document.getElementById('f-img').value.trim()||'#';
     if(!title||!cat){ showToast('Please fill in title and category!'); return; }
 
     if(editingId){
